@@ -31,6 +31,14 @@ bool PeakFinder::Find(double *waveformArray, unsigned int &risingEdge, unsigned 
     bool foundAPeak = false;
     CopyOver(waveformArray);
 
+    /* TODO:
+     *  - If kSlopeThresholdRegistered is false then doing nothing
+     *  and return a warning.
+     *  - If kNumberOfSamples is not set then doing nothign and
+     *  return a warning.
+     *
+     */
+
     for (unsigned int idx = startIdx; idx < kNumberOfSamples; idx++) {
         double firstDerivative = LocalDerivative(idx);
         if (firstDerivative >= kSlopeThreshold) {
